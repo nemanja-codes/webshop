@@ -1,9 +1,6 @@
 package com.nemanja.SpringEcom.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -23,6 +20,10 @@ public class Product {
     private BigDecimal price;
     private String category;
     private Date releaseDate;
+    private String imageName;
+    private String imageType;
+    @Lob
+    private byte[] imageData;
     private boolean productAvailable;
     private int stockQuantity;
 
@@ -37,6 +38,21 @@ public class Product {
         this.price = price;
         this.category = category;
         this.releaseDate = releaseDate;
+        this.productAvailable = productAvailable;
+        this.stockQuantity = stockQuantity;
+    }
+
+    public Product(int id, String name, String description, String brand, BigDecimal price, String category, Date releaseDate, String imageName, String imageType, byte[] imageData, boolean productAvailable, int stockQuantity) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.brand = brand;
+        this.price = price;
+        this.category = category;
+        this.releaseDate = releaseDate;
+        this.imageName = imageName;
+        this.imageType = imageType;
+        this.imageData = imageData;
         this.productAvailable = productAvailable;
         this.stockQuantity = stockQuantity;
     }
@@ -111,5 +127,29 @@ public class Product {
 
     public void setStockQuantity(int stockQuantity) {
         this.stockQuantity = stockQuantity;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
     }
 }
